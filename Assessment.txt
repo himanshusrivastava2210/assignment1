@@ -137,8 +137,33 @@ HTML
 
 
 
+-------------------------------------------------
+Table
+-------------------------------------------------
+
+create table employees(employee_code number, Employee_name varchar2(15), D
+te_of_joining date, Employee_salary number,grade char(2) references salgrade(gr
+de));
+
+insert into salgrade values('A',10000,20000);
+insert into salgrade values('B',20001,40000);
+insert into salgrade values('C',40001,60000);
+insert into employees values(101,'preetham',' 10-jan-2010',18000,'A');
+insert into employees values(102,'Aakash',' 10-nov-2005',48000,'C');
+insert into employees values(103,'Kishore',' 19-dec-2011',21000,'B');
+insert into employees values(104,'Reena',' 23-jun-2006',42000,'C');
+insert into employees values(105,'Kailash',' 05-feb-2004',46000,'C');
+insert into employees values(106,'Sahana','18-nov-2003',52000,'C');
+insert into employees values(107,'keerthana','25-jul-2006',27000,'B');
+create sequence empCode_Seq start with 108;
 
 
+select * from salgrade;
+
+select * from employees;
+
+select count(employee_code) from employees where Employee_salary > (select
+avg(Employee_salary) from employees);
 
 ------------------------------------
 Q1-Procedure
@@ -177,24 +202,11 @@ dbms_output.put_line(amount);
 END;
 
 ------------------------------------------
-Q2 a)Update employees set employee_salary = Employee_salary * 1.1 
-Where (sysdate - date_of_joining) > 5;
-   b)Alter table employees
-Add col_name varchar2(40);
-   c)Select count( employee_code) from employees where Employee_salary > (select avg( Employee_salary) from employees;
+Q2 a)Update employees set employee_salary = Employee_salary * 1.1 Where (sysdate - date_of_joining) > 5;
+   b)Alter table employees Add col_name varchar2(40)
+   c)Select count( employee_code) from employees where Employee_salary > (select avg( Employee_salary) from employees
 -----------------------------------------
 Q3 INSERT INTO employee VALUES (employee_code.NEXTVAL, employeename, sysdate, salary);
-
-
-
-
-
-
-
-
-
-
-
 
 
 ----------------------------------------
